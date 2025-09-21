@@ -14,6 +14,7 @@ jobs:
         with:
           ref: gh-pages
           path: ./.github/gh-pages
+          fetch-depth: 0
 
       - name: Run UI-tests via docker-compose
         env:
