@@ -33,6 +33,12 @@ jobs:
           sudo ln -sf /opt/allure-${ALLURE_VERSION}/bin/allure /usr/local/bin/allure
           allure --version
 
+      - name: Copy history from gh-pages to allure-results
+        if: always()
+        run: |
+          mkdir -p allure-results/history
+          cp -R gh-pages/history/* allure-results/history/ || true
+
       - name: Generate Allure report
         if: always()
         run: |
