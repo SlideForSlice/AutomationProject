@@ -9,6 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: ./.github/gh-pages
+
       - name: Run UI-tests via docker-compose
         env:
           SITE_EMAIL: ${{secrets.SITE_EMAIL}}
