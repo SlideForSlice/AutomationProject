@@ -33,12 +33,6 @@ jobs:
           rm -rf allure-report
           allure generate allure-results --clean -o allure-report
 
-      - name: Upload Pages artifact
-        if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-        path: ./allure-report
-
       - name: Deploy to GitHub Pages
         if: always()
         uses: actions/deploy-pages@v4
