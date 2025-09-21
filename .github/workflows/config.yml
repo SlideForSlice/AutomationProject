@@ -33,6 +33,11 @@ jobs:
           sudo ln -sf /opt/allure-${ALLURE_VERSION}/bin/allure /usr/local/bin/allure
           allure --version
 
+      - name: Fix permissions for allure-results
+        if: always()
+        run: |
+          sudo chown -R $USER:$USER allure-results || true
+
       - name: Copy history from gh-pages to allure-results
         if: always()
         run: |
