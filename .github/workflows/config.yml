@@ -45,6 +45,12 @@ jobs:
           rm -rf allure-report
           allure generate allure-results --clean -o allure-report
 
+      - name: Update Allure history
+        if: always()
+        run: |
+          mkdir -p gh-pages/history
+          cp -R allure-report/history/* gh-pages/history/ || true
+
       - name: Deploy to GitHub Pages
         if: always()
         uses: JamesIves/github-pages-deploy-action@4.1.5
