@@ -16,6 +16,12 @@ jobs:
         run: |
           docker compose up --exit-code-from regression || true
 
+      - name: Install Allure
+        if: always()
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y allure
+
       - name: Generate Allure report
         if: always()
         run: |
